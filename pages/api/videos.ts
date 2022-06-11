@@ -1,16 +1,20 @@
 import nc from 'next-connect'
 import upload from 'utils/upload'
+import { ObjectId } from 'mongodb'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
+import connectToDatabase from 'utils/mongodb'
+import jwt from 'next-auth/jwt'
 
-type Data = {
-  title: string;
-  authorName: string;
-  authorAvatar: string;
-  videoUrl: string;
+const secret = process.env.JWT_SECRET
+
+export const config = {
+  api: {
+    bodyParser: false
+  }
 }
 
-export default nc<NextApiRequest, NextApiResponse<Data>>({
+export default nc<NextApiRequest & { [key: string]: any }, NextApiResponse>({
 
   onError: (err, req, res, next) => {
     console.error(err.stack);
@@ -21,6 +25,23 @@ export default nc<NextApiRequest, NextApiResponse<Data>>({
   },
   }).use(upload.single('file'))
 
-  .post((req, res) => {
-    const { title, authorName, authorAvatar, videoUrl } = req.body
+  .post(async (req, res) => {
+
+    const token = await jwt.getToken({ req, secret })
+
+    if (token) {
+      const { title, authorId, authorName, authorAvatar, videoUrl } = req.body
+      const { db } = await connectToDatabase()
+      const collection = db.collection('videos')
+  
+      await collection.inserOne({ 
+        title, authorName, authorId: new ObjectId(authorId), authorAvatar, views: 0, 
+        thumb: req.file.location, videoUrl, updateAt: new Date()
+      })
+  
+      return res.status(200).json({ status: true})
+    }
+
+    return res.status(401).end()
+
   })

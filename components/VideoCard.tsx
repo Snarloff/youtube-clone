@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
@@ -30,7 +31,7 @@ export default function TopBar ({ item }: {item: VideoInterface}) {
     <Box>
       <img src={item.thumb} alt={item.title} className={classes.img} />
       <Box display="flex" mt="1">
-        <Box>
+        <Box mr={2}>
           <Avatar alt={item.authorName} src={item.authorAvatar}>LL</Avatar>
         </Box>
 

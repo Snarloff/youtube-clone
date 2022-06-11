@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
+import Avatar from '@mui/material/Avatar'
 import InputBase from '@mui/material/InputBase'
 import IconButton from '@mui/material/IconButton'
 
@@ -15,6 +16,7 @@ import VideoCallIcon from '@mui/icons-material/VideoCall'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import AppsIcon from '@mui/icons-material/Apps'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -43,11 +45,15 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   input: {
     flex: 1
   },
+  avatar: {
+    
+  }
 }))
 
 export default function TopBar () {
 
   const classes = useStyles()
+  const { data: session, status } = useSession()
 
   return (
     <AppBar className={classes.root} color="default">
@@ -77,15 +83,22 @@ export default function TopBar () {
           <MoreVertIcon />
          </IconButton>
 
-          <Button 
-            color="secondary" 
-            component="a" 
-            variant="outlined" 
-            startIcon={<AccountCircleIcon />}
-            // onClick={() => signIn('google')}
-          >
-            Fazer login
-          </Button>
+          {status !== 'authenticated' ? (
+            <Button 
+              color="secondary" 
+              component="a" 
+              variant="outlined" 
+              startIcon={<AccountCircleIcon />}
+              onClick={() => signIn('google')}
+            >
+              Fazer login
+            </Button>
+
+          ) : (
+            <Box display="flex" alignItems="center">
+              <Avatar onClick={() => signOut()} alt="User" src={session?.user?.image} className={classes.avatar} />
+            </Box>
+          )}
 
         </Box>
       </Toolbar>
