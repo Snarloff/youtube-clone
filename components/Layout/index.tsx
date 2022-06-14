@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 
 interface LayoutProps {
   children: React.ReactNode,
-  title: string
+  title?: string
 }
 
 const useStyles = makeStyles((theme: Theme) => createStyles({

@@ -1,14 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import VideoInterface from 'interfaces/Video'
+import Image from 'next/image'
 
 import { Theme } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
 import { Box, Avatar, Typography } from '@mui/material'
+import { useRouter } from 'next/router'
 
 dayjs.extend(relativeTime)
-
-import VideoInterface from 'interfaces/Video'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   caption: {
@@ -20,16 +20,22 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   img: {
     width: '100%',
+    cursor: 'pointer',
   }
 }))
 
 export default function TopBar ({ item }: {item: VideoInterface}) {
 
   const classes = useStyles()
+  const router  = useRouter()
 
   return (
     <Box>
-      <img src={item.thumb} alt={item.title} className={classes.img} />
+      <Image width={500} height={300} src={item.thumb} alt={item.title} 
+        className={classes.img} 
+        onClick={() => router.push({ pathname: '/video/[id]', query: { id: item._id } })}
+        layout="intrinsic"
+      />
       <Box display="flex" mt="1">
         <Box mr={2}>
           <Avatar alt={item.authorName} src={item.authorAvatar}>LL</Avatar>

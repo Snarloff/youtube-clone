@@ -17,7 +17,7 @@ export const config = {
 export default nc<NextApiRequest & { [key: string]: any }, NextApiResponse>({
 
   onError: (err, req, res, next) => {
-    console.error(err.stack);
+    console.error(err);
     res.status(500).end('Something broke!');
   },
   onNoMatch: (req, res) => {
@@ -27,9 +27,9 @@ export default nc<NextApiRequest & { [key: string]: any }, NextApiResponse>({
 
   .post(async (req, res) => {
 
-    const token = await jwt.getToken({ req, secret })
+    // const token = await jwt.getToken({ req, secret })
 
-    if (token) {
+    // if (token) {
       const { title, authorId, authorName, authorAvatar, videoUrl } = req.body
       const { db } = await connectToDatabase()
       const collection = db.collection('videos')
@@ -39,9 +39,9 @@ export default nc<NextApiRequest & { [key: string]: any }, NextApiResponse>({
         thumb: req.file.location, videoUrl, updateAt: new Date()
       })
   
-      return res.status(200).json({ status: true})
-    }
+      return res.status(200).json({ status: true })
+    // }
 
-    return res.status(401).end()
+    // return res.status(401).end()
 
   })
