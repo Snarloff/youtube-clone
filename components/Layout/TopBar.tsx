@@ -1,5 +1,6 @@
 import { Hidden, Theme } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
@@ -16,7 +17,11 @@ import VideoCallIcon from '@mui/icons-material/VideoCall'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import AppsIcon from '@mui/icons-material/Apps'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+
+import useSettings from 'hooks/useSettings'
+import THEMES from 'utils/constants'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -54,13 +59,20 @@ export default function TopBar () {
 
   const classes = useStyles()
   const { data: session, status } = useSession()
+  const { settings, saveSettings } = useSettings()
 
   return (
     <AppBar className={classes.root} color="default">
       <Toolbar className={classes.toolbar}>
         <Box display="flex" alignItems="center">
           <MenuIcon />
-          <img src="/youtubeLogo.svg" alt="Youtube logo" className={classes.logo}/>
+          <img 
+            src={
+              settings.theme === THEMES.DARK ? '/branco.png' : 'youtubeLogo.svg'
+            }
+            alt="Youtube logo" 
+            className={classes.logo}
+          />
         </Box>
         <Hidden mdDown> {/*menor que a resolução média */}
           <Box>
@@ -73,6 +85,15 @@ export default function TopBar () {
           </Box>
         </Hidden>
         <Box display="flex" alignItems="center">
+
+          <IconButton>
+            {settings.theme === THEMES.DARK ? (
+              <Brightness7Icon onClick={() => saveSettings({ theme: THEMES.LIGHT })} />
+            ): (
+              <Brightness4Icon onClick={() => saveSettings({ theme: THEMES.DARK})} />
+            )}
+          </IconButton>
+
          <IconButton>
           <VideoCallIcon />
          </IconButton>

@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import CssBaseline from '@mui/material/CssBaseline'
-import theme from 'settings/theme'
+import NProgress from 'nprogress'
+import CustomThemeProvider from 'components/ThemeProvider'
 import { AppProps } from 'next/app'
-import { ThemeProvider } from '@mui/material/styles'
 import { SessionProvider  } from 'next-auth/react'
 import { Router } from 'next/router'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 import { Fragment } from 'react'
+import { SettingsProvider } from 'contexts/SettingsContext'
+
+import 'nprogress/nprogress.css'
 
 interface MyAppProps extends AppProps {
 }
@@ -35,14 +36,17 @@ export default function MyApp(props: MyAppProps) {
   
   return (
     <Fragment>
+      <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
+
       <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
-        <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </Head>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <SettingsProvider>
+          <CustomThemeProvider>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </CustomThemeProvider>
+        </SettingsProvider>
       </SessionProvider>
 
       <style global jsx>
