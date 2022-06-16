@@ -51,9 +51,9 @@ const ThemesOptions: Array<object> = [
         focus: 'rgba(255, 255, 255, 0.12)',
       },
       background: {
-        default: '#282C34',
-        dark: '#1c2025',
-        paper: '#282C34',
+        default: '#111111',
+        dark: '#111111',
+        paper: '#111111',
       },
       primary: {
         main: '#8a85ff',

@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { Hidden, Theme } from '@mui/material'
 import { makeStyles, createStyles } from '@mui/styles'
 import { signIn, signOut, useSession } from 'next-auth/react'
@@ -65,10 +67,10 @@ export default function TopBar () {
     <AppBar className={classes.root} color="default">
       <Toolbar className={classes.toolbar}>
         <Box display="flex" alignItems="center">
-          <MenuIcon />
+          <MenuIcon color="action" />
           <img 
             src={
-              settings.theme === THEMES.DARK ? '/branco.png' : 'youtubeLogo.svg'
+              settings.theme === THEMES.DARK ? '/1280px-YouTube_dark_logo_2017.svg.png' : 'youtubeLogo.svg'
             }
             alt="Youtube logo" 
             className={classes.logo}
