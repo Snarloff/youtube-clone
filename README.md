@@ -1,34 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Clone da Interface do YouTube em Next.js 12
 
-First, run the development server:
+Este é um projeto de clone da interface do YouTube desenvolvido com Next.js 12, Material-UI para o design, autenticação utilizando NextAuth.js, Next-Connect para a API e MongoDB como banco de dados.
 
-```bash
-npm run dev
-# or
-yarn dev
+## Visão Geral
+
+Este projeto tem como objetivo demonstrar a criação de uma aplicação web moderna com recursos de frontend e backend. Ele inclui as seguintes funcionalidades:
+
+- Replicação da interface do YouTube, incluindo listagem de vídeos, reprodução e upagem de video na AWS (API).
+- Autenticação de usuário com o **Google** usando NextAuth.js 
+- Backend implementado com Next-Connect para fornecer APIs RESTful para a aplicação frontend.
+- Armazenamento de dados em um banco de dados MongoDB.
+
+## Tecnologias Utilizadas
+
+- [Next.js 12](https://nextjs.org/): Framework de React para renderização do lado do servidor.
+- [Material-UI](https://material-ui.com/): Biblioteca de componentes de UI para React.
+- [NextAuth.js](https://next-auth.js.org/): Biblioteca de autenticação para Next.js.
+- [MongoDB](https://www.mongodb.com/): Banco de dados NoSQL para armazenamento de dados.
+- [Next-Connect](https://www.npmjs.com/package/next-connect): Middleware para criar rotas API no Next.js.
+
+## Instalação e Execução
+
+Certifique-se de ter o Node.js e o MongoDB instalados na sua máquina. Em seguida, siga os passos abaixo:
+
+1. Clone este repositório:
+
+   ```shell
+   git clone https://github.com/Snarloff/youtube-clone.git
+   ```
+
+2. Navegue até o diretório do projeto:
+
+   ```shell
+   cd nome-do-repositorio
+   ```
+
+3. Instale as dependências:
+
+   ```shell
+   npm install
+   ```
+
+4. Configure as variáveis de ambiente. Crie um arquivo `.env.local` na raiz do projeto e defina as variáveis necessárias para a autenticação com NextAuth.js e a conexão com o MongoDB:
+
+   ```env
+   NEXTAUTH_URL=
+   MONGODB_URI=
+   AWS_SECRET_KEY=
+   AWS_ACCESS_KEY=
+   AWS_REGION=
+   JWT_SECRET=
+   GOOGLE_CLIENT_ID=
+   GOGOLE_CLIENT_SECRET=
+   ```
+
+5. Inicie o servidor de desenvolvimento:
+
+   ```shell
+   npm run dev
+   ```
+
+6. Acesse a aplicação em seu navegador em `http://localhost:3000`.
+
+## Contribuições
+
+Contribuições são bem-vindas! Se você deseja contribuir para este projeto, siga as diretrizes de contribuição e envie um pull request.
+
+## Problemas e Sugestões
+
+Se você encontrar algum problema ou tiver sugestões para melhorar este projeto, por favor, abra uma issue neste repositório.
+
+## Licença
+
+Este projeto está sob a licença ISC.
+
+---
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Agradecemos por visitar este repositório e por seu interesse no projeto de clone da interface do YouTube em Next.js 12. Esperamos que este projeto seja útil e educativo para outros desenvolvedores interessados em construir aplicativos web modernos com Next.js e MongoDB.
+```
