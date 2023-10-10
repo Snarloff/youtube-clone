@@ -12,6 +12,17 @@ Este projeto tem como objetivo demonstrar a criação de uma aplicação web mod
 - Backend implementado com Next-Connect para fornecer APIs RESTful para a aplicação frontend.
 - Armazenamento de dados em um banco de dados MongoDB.
 
+## Fotos do Projeto
+
+
+### Tema Claro
+
+![Tema Branco](https://i.imgur.com/6csfQaA.png)
+
+### Tema Escuro
+
+![Tema Escuro](https://i.imgur.com/iZZX2eT.png)
+
 ## Tecnologias Utilizadas
 
 - [Next.js 12](https://nextjs.org/): Framework de React para renderização do lado do servidor.
