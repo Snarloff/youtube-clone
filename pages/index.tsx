@@ -25,9 +25,9 @@ export async function getStaticProps() {
   const data = [
     {
       _id: 1,
-      title: 'FEED DO USUÁRIO | Criando uma Rede Social com React.js e .NET Core #29',
+      title: 'Como desenvolver um clone do Youtube com Material UI',
       authorId: 1,
-      authorName: 'Lucas Nhimi',
+      authorName: 'Snarloff',
       authorAvatar: 'avatarUrl',
       views: 10,
       thumb: '/thumbs/next01.png',
@@ -36,9 +36,9 @@ export async function getStaticProps() {
     },
     {
       _id: 2,
-      title: 'FEED DO USUÁRIO | Criando uma Rede Social com React.js e .NET Core #29',
+      title: 'Como desenvolver um clone do Youtube com Material UI',
       authorId: 1,
-      authorName: 'Lucas Nhimi',
+      authorName: 'Snarloff',
       authorAvatar: 'avatarUrl',
       views: 10,
       thumb: '/thumbs/next01.png',
@@ -47,9 +47,9 @@ export async function getStaticProps() {
     },
     {
       _id: 3,
-      title: 'FEED DO USUÁRIO | Criando uma Rede Social com React.js e .NET Core #29',
+      title: 'Como desenvolver um clone do Youtube com Material UI',
       authorId: 1,
-      authorName: 'Lucas Nhimi',
+      authorName: 'Snarloff',
       authorAvatar: 'avatarUrl',
       views: 10,
       thumb: '/thumbs/next01.png',
@@ -58,9 +58,9 @@ export async function getStaticProps() {
     },
     {
       _id: 4,
-      title: 'FEED DO USUÁRIO | Criando uma Rede Social com React.js e .NET Core #29',
+      title: 'Como desenvolver um clone do Youtube com Material UI',
       authorId: 1,
-      authorName: 'Lucas Nhimi',
+      authorName: 'Snarloff',
       authorAvatar: 'avatarUrl',
       views: 10,
       thumb: '/thumbs/next01.png',
